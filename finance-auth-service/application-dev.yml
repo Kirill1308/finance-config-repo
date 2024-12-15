@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/finance_auth
-    username: postgres
-    password: '{cipher}AQA6EN7aXNXr...'  # encrypted password
+    username: 589dc3d84e25c6e407abdf9c018c1c78f45812222c1af355c74fbe8125e314d2
+    password: '{cipher}589dc3d84e25c6e407abdf9c018c1c78f45812222c1af355c74fbe8125e314d2'
 
 logging:
   level:
