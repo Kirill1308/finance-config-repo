@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/finance_auth
+    username: postgres
+    password: '{cipher}AQA6EN7aXNXr...'  # encrypted password
+
+logging:
+  level:
+    com.popov.auth: DEBUG
