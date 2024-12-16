@@ -20,7 +20,7 @@ feign:
         url: http://localhost:8082
       user:
         name: finance-user-service
-        url: http://localhost:8083
+        url: http://localhost:8083/api/profiles
   circuitbreaker:
     enabled: true
 
