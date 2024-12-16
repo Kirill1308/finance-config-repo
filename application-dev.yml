@@ -7,3 +7,52 @@ security:
   jwt:
     secret: '{cipher}b5d2279f984af7aa663f1a84fac1dcf937071f642bb1f802facc4e9f0bf4b447d93ef7a368118febe957dc745fabeb06d0c47ddccef9bfcf65db80654adabaf2be4eafb4f7c56b72a99a933b2cba954d'
     expirationTime: 86400000  # 24 hours
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+      subscription:
+        name: finance-subscription-service
+        url: http://localhost:8082
+      user:
+        name: finance-user-service
+        url: http://localhost:8083
+  circuitbreaker:
+    enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      finance-subscription-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
+      finance-user-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+  retry:
+    instances:
+      finance-subscription-service:
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+      finance-user-service:
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+
+logging:
+  level:
+    com.popov.auth: DEBUG
+    com.popov.common.clients: DEBUG
+    com.popov.common.clients.fallback: ERROR

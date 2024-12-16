@@ -8,9 +8,3 @@ spring:
 logging:
   level:
     com.popov.auth: DEBUG
-
-feign:
-  client:
-    config:
-      user:
-        url: http://localhost:8083

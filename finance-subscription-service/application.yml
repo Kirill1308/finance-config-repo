@@ -7,37 +7,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
-      subscription:
-        name: finance-subscription-service
-        url: http://localhost:8082
-  circuitbreaker:
-    enabled: true
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      subscription-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 20s
-        permittedNumberOfCallsInHalfOpenState: 3
-  retry:
-    instances:
-      subscription-service:
-        maxAttempts: 3
-        waitDuration: 1s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
-
-logging:
-  level:
-    com.popov.common.clients: DEBUG
-    com.popov.common.clients.fallback: ERROR
