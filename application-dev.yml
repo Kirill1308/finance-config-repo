@@ -17,7 +17,7 @@ feign:
         loggerLevel: full
       subscription:
         name: finance-subscription-service
-        url: http://localhost:8082
+        url: http://localhost:8082/api/subscriptions
       user:
         name: finance-user-service
         url: http://localhost:8083/api/profiles
