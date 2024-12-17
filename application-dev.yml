@@ -55,4 +55,4 @@ logging:
   level:
     com.popov.auth: DEBUG
     com.popov.common.clients: DEBUG
-    com.popov.common.clients.fallback: DEBUG
+#    com.popov.common.clients.fallback: ERROR
