@@ -24,33 +24,50 @@ feign:
         url: http://localhost:8083/api/fake-profiles
   circuitbreaker:
     enabled: true
+    group:
+      enabled: true
+
+spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 resilience4j:
   circuitbreaker:
     instances:
-      finance-subscription-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 20s
-        permittedNumberOfCallsInHalfOpenState: 3
       finance-user-service:
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState: 20s
         permittedNumberOfCallsInHalfOpenState: 3
 
-  retry:
-    instances:
-      finance-subscription-service:
-        maxAttempts: 3
-        waitDuration: 1s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
-      finance-user-service:
-        maxAttempts: 3
-        waitDuration: 1s
-        enableExponentialBackoff: true
-        exponentialBackoffMultiplier: 2
+#resilience4j:
+#  circuitbreaker:
+#    instances:
+#      finance-subscription-service:
+#        slidingWindowSize: 10
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 20s
+#        permittedNumberOfCallsInHalfOpenState: 3
+#      finance-user-service:
+#        slidingWindowSize: 10
+#        failureRateThreshold: 50
+#        waitDurationInOpenState: 20s
+#        permittedNumberOfCallsInHalfOpenState: 3
+#
+#  retry:
+#    instances:
+#      finance-subscription-service:
+#        maxAttempts: 3
+#        waitDuration: 1s
+#        enableExponentialBackoff: true
+#        exponentialBackoffMultiplier: 2
+#      finance-user-service:
+#        maxAttempts: 3
+#        waitDuration: 1s
+#        enableExponentialBackoff: true
+#        exponentialBackoffMultiplier: 2
 
 logging:
   level:
