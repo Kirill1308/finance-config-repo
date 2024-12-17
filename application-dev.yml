@@ -20,8 +20,8 @@ feign:
         url: http://localhost:8082/api/subscriptions
       user:
         name: finance-user-service
-#        url: http://localhost:8083/api/profiles
-        url: http://localhost:8083/api/fake-profiles
+        url: http://localhost:8083/api/profiles
+#        url: http://localhost:8083/api/fake-profiles
   circuitbreaker:
     enabled: true
     group:
