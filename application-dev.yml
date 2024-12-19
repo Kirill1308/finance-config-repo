@@ -23,6 +23,9 @@ feign:
       user:
         name: finance-user-service
         url: http://localhost:8083
+      payment:
+        name: finance-payment-service
+        url: http://localhost:8084
   circuitbreaker:
     enabled: true
     group:
@@ -53,6 +56,11 @@ resilience4j:
         failureRateThreshold: 50
         waitDurationInOpenState: 20s
         permittedNumberOfCallsInHalfOpenState: 3
+      finance-payment-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
 
   retry:
     instances:
@@ -62,6 +70,11 @@ resilience4j:
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
       finance-user-service:
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+      finance-payment-service:
         maxAttempts: 3
         waitDuration: 1s
         enableExponentialBackoff: true
