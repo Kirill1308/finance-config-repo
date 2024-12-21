@@ -1,0 +1,9 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: finance-transaction-service
+  jpa:
+    hibernate:
+      ddl-auto: validate
