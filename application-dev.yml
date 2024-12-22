@@ -98,3 +98,5 @@ logging:
     com.popov.auth: DEBUG
     com.popov.common.clients: DEBUG
     com.popov.common.clients.fallback: ERROR
+
+
