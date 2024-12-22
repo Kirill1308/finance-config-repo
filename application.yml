@@ -12,8 +12,8 @@ spring:
 
 # Rate limit configuration
 rate-limit:
-  max-requests-per-minute: 10
-  max-requests-per-hour: 10
+  max-requests-per-minute: 60
+  max-requests-per-hour: 1000
 
 logging:
   level:
