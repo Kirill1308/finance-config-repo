@@ -20,6 +20,9 @@ feign:
       subscription:
         name: finance-subscription-service
         url: http://localhost:8082
+      usage:
+        name: finance-subscription-service
+        url: http://localhost:8082/api/usage
       user:
         name: finance-user-service
         url: http://localhost:8083
