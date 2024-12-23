@@ -20,9 +20,6 @@ feign:
       subscription:
         name: finance-subscription-service
         url: http://localhost:8082
-      usage:
-        name: finance-subscription-service
-        url: http://localhost:8082/api/usage
       user:
         name: finance-user-service
         url: http://localhost:8083
@@ -63,11 +60,6 @@ resilience4j:
   circuitbreaker:
     instances:
       finance-subscription-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 20s
-        permittedNumberOfCallsInHalfOpenState: 3
-      finance-usage-service:
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState: 20s
