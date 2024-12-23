@@ -67,6 +67,11 @@ resilience4j:
         failureRateThreshold: 50
         waitDurationInOpenState: 20s
         permittedNumberOfCallsInHalfOpenState: 3
+      finance-usage-service:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
       finance-user-service:
         slidingWindowSize: 10
         failureRateThreshold: 50
