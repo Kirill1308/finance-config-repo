@@ -26,6 +26,9 @@ feign:
       payment:
         name: finance-payment-service
         url: http://localhost:8084
+      wallet:
+        name: finance-wallet-service
+        url: http://localhost:8086
   circuitbreaker:
     enabled: true
     group:
