@@ -8,6 +8,22 @@ eureka:
 feign:
   client:
     config:
+      finance-subscription-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+      finance-user-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+      finance-payment-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+      finance-wallet-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
       default:
         connectTimeout: 5000
         readTimeout: 5000
