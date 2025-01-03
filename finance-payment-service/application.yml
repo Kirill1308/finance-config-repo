@@ -1,9 +1,0 @@
-server:
-  port: 8084
-
-spring:
-  application:
-    name: finance-payment-service.yml
-  jpa:
-    hibernate:
-      ddl-auto: validate
