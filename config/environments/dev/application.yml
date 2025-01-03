@@ -8,44 +8,26 @@ eureka:
 feign:
   client:
     config:
-      finance-subscription-service:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
-      finance-user-service:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
-      finance-payment-service:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
-      finance-wallet-service:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
       default:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+      subscription:
+        name: finance-subscription-service
+        url: http://localhost:8082
+      user:
+        name: finance-user-service
+        url: http://localhost:8083
+      payment:
+        name: finance-payment-service.yml
+        url: http://localhost:8084
+      wallet:
+        name: finance-wallet-service
+        url: http://localhost:8086
   circuitbreaker:
     enabled: true
     group:
       enabled: true
-
-services:
-  subscription:
-    name: finance-subscription-service
-    url: http://localhost:8082
-  user:
-    name: finance-user-service
-    url: http://localhost:8083
-  payment:
-    name: finance-payment-service
-    url: http://localhost:8084
-  wallet:
-    name: finance-wallet-service
-    url: http://localhost:8086
 
 spring:
   cloud:
@@ -68,34 +50,54 @@ spring:
 
 resilience4j:
   circuitbreaker:
-    configs:
-      default:
+    instances:
+      finance-subscription-service:
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState: 20s
         permittedNumberOfCallsInHalfOpenState: 3
-    instances:
-      finance-subscription-service:
-        baseConfig: default
       finance-user-service:
-        baseConfig: default
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
       finance-payment-service:
-        baseConfig: default
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
 
   retry:
-    configs:
-      default:
+    instances:
+      finance-subscription-service:
         maxAttempts: 3
         waitDuration: 1s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
-    instances:
-      finance-subscription-service:
-        baseConfig: default
       finance-user-service:
-        baseConfig: default
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
       finance-payment-service:
-        baseConfig: default
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+
+services:
+  subscription:
+    name: finance-subscription-service
+    url: http://localhost:8082
+  user:
+    name: finance-user-service
+    url: http://localhost:8083
+  payment:
+    name: finance-payment-service
+    url: http://localhost:8084
+  wallet:
+    name: finance-wallet-service
+    url: http://localhost:8086
 
 redis:
   host: localhost
