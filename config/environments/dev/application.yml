@@ -52,26 +52,34 @@ spring:
 
 resilience4j:
   circuitbreaker:
-    default:
-      slidingWindowSize: 10
-      failureRateThreshold: 50
-      waitDurationInOpenState: 20s
-      permittedNumberOfCallsInHalfOpenState: 3
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 3
     instances:
-      finance-subscription-service: { }
-      finance-user-service: { }
-      finance-payment-service: { }
+      finance-subscription-service:
+        baseConfig: default
+      finance-user-service:
+        baseConfig: default
+      finance-payment-service:
+        baseConfig: default
 
   retry:
-    default:
-      maxAttempts: 3
-      waitDuration: 1s
-      enableExponentialBackoff: true
-      exponentialBackoffMultiplier: 2
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 1s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
     instances:
-      finance-subscription-service: { }
-      finance-user-service: { }
-      finance-payment-service: { }
+      finance-subscription-service:
+        baseConfig: default
+      finance-user-service:
+        baseConfig: default
+      finance-payment-service:
+        baseConfig: default
 
 redis:
   host: localhost
