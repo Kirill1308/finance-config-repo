@@ -4,6 +4,3 @@ server:
 spring:
   application:
     name: finance-payment-service.yml
-  jpa:
-    hibernate:
-      ddl-auto: validate
