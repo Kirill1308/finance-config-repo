@@ -68,6 +68,3 @@ redis:
 logging:
   level:
     com.popov: DEBUG
-
-cors:
-  allowed-origins: 'http://localhost:3000'
