@@ -69,8 +69,6 @@ minio:
   endpoint: http://localhost:9000
   accessKey: minioadmin
   secretKey: minioadmin
-  buckets:
-    user-avatars: user-avatars
 
 logging:
   level:
